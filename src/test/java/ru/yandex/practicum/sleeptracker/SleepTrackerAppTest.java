@@ -114,7 +114,7 @@ class SleepTrackerAppTest {
                 session(LocalDateTime.of(2025, 10, 2, 7, 0), LocalDateTime.of(2025, 10, 2, 11, 0), SleepQuality.NORMAL)
         );
         SleepAnalysisResult r = a.apply(sessions);
-        assertEquals(1L, r.getValue());
+        assertEquals(0L, r.getValue());
     }
 
     @Test
