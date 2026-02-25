@@ -40,10 +40,10 @@ public class ChronotypeAnalyzer implements Function<List<SleepingSession>, Sleep
     private Chronotype classifyNight(SleepingSession s) {
         LocalTime fall = s.getFallAsleep().toLocalTime();
         LocalTime wake = s.getWakeUp().toLocalTime();
-        if (!fall.isBefore(OWL_SLEEP_AFTER) && !wake.isBefore(OWL_WAKE_AFTER)) {
+        if (fall.isAfter(OWL_SLEEP_AFTER) && wake.isAfter(OWL_WAKE_AFTER)) {
             return Chronotype.OWL;
         }
-        if (fall.isBefore(LARK_SLEEP_BEFORE) && wake.isBefore(LARK_WAKE_BEFORE)) {
+        if (!fall.isAfter(LARK_SLEEP_BEFORE) && !wake.isAfter(LARK_WAKE_BEFORE)) {
             return Chronotype.LARK;
         }
         return Chronotype.DOVE;
